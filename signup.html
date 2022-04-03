@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>    
+<link rel="stylesheet" type="text/css" href="signup.css">
+    <title>signup page</title>
+
+</head>
+<body>
+    <main>
+    <div id="container">
+    <div class="box">
+    <div class="header">
+    <h1 class="logo" >Mini-Insta</h1>
+    <p class="logo1">Sign up to connect with the world.</p>
+    </div>
+    <input type="email" placeholder="Email" id="email"><br>
+    <input type="full name" placeholder="Full Name" id="fullname"><br>
+    <input type="username" placeholder="Username" id="username"><br>
+    <input type="password" placeholder="Password" id="password"><br>
+    <button class="Signup-btn" title="signup" onclick="signUp()"> Sign up</button><br>
+    <div class="separator">
+    <div class="line"></div>
+    <p>OR</p>
+    <div class="line"></div>
+    </div>
+    <p>Have an account? <a class="Log in" href="./login.html">Log in</a></p>
+    </div>
+    </div>
+    </main>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyBZlVvC73hkjdQ4wrsn6n5kEXFnKiAa94w",
+  authDomain: "mini-insta-cf48e.firebaseapp.com",
+  projectId: "mini-insta-cf48e",
+  storageBucket: "mini-insta-cf48e.appspot.com",
+  messagingSenderId: "411742918513",
+  appId: "1:411742918513:web:e89e38b8dff2c1bf2148d0"
+};
+// Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+const auth = firebase.auth();
+
+function signUp(){
+var email1 = document.getElementById("email");
+var password1 = document.getElementById("password");
+alert(email1.value);
+const promise = auth.createUserWithEmailAndPassword(email1.value, password1.value);
+promise.then(u =>{
+alert("Signed Up");})
+promise.catch(e => alert(e.message));}
+    </script>
+</body>
+</html>
